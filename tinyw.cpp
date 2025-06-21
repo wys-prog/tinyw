@@ -35,7 +35,7 @@ TinyWDeclStart
 
     System::ExecutionFile(argv[0]);
     System::CheckAndFixHome();
-    System::GetSubCommand({PYTHON, "curl", CLEAR});
+    System::GetSubCommand({PYTHON, "curl", CLEAR, "git", "g++", "gcc"});
     System::LaunchExtentions();
 
     std::vector<std::string> args;
