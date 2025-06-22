@@ -32,12 +32,12 @@ TinyWDeclStart
 
   int TinyWylandMain(int argc, char *const argv[]) {
     if (argc < 2) return -1;
-
+    
     System::ExecutionFile(argv[0]);
     System::CheckAndFixHome();
     System::GetSubCommand({PYTHON, "curl", CLEAR, "git", "g++", "gcc"});
     System::LaunchExtentions();
-
+    
     std::vector<std::string> args;
     for (int i = 1; i < argc; i++) args.push_back(argv[i]);
 
@@ -53,7 +53,7 @@ TinyWDeclStart
       std::cerr << "> [i:err]: Unknown Exception" << std::endl;
       return -1;
     }
-
+    
     return 0;
   }
 
@@ -62,3 +62,11 @@ TinyWDeclEnd
 int main(int argc, char *const argv[]) {
   return wylma::wyland::TinyWylandMain(argc, argv);
 }
+
+/*
+ * Signed by: Wys
+ *
+ * To "sign" the binary, you can add a unique string in the code.
+ * For example, you can add the following variable, which will be embedded in the binary:
+ */
+const char* wys_signature = "Signed by Wys";

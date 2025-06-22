@@ -118,7 +118,7 @@ void run_tasks(const std::vector<GenericTask*> &tasks) {
 GenericTask copy_file(const std::string &title, const std::string &file1, const std::string &file2, const size_t buffer_size = 1) {
   return GenericTask(title, [&](auto report_progress) {
     std::ifstream input(file1);
-    std::ofstream out(file2, std::ios::binary);
+    std::ofstream out(file2);
       
     input.seekg(0, std::ios::end);
     auto total = input.tellg();

@@ -75,7 +75,7 @@ TinyWDecl(
 
 
 TinyWDecl(
-  std::string is_true(bool WHAT_AGAIN) { 
+  inline std::string is_true(bool WHAT_AGAIN) { 
   return WHAT_AGAIN ? "true" : "false";
   }
 )

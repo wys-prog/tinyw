@@ -38,6 +38,7 @@
 #include "glob.hpp"
 #include "tasks.hpp"
 #include "vec.hpp"
+#include ".libcont.hpp"
 
 TinyWDeclStart
 
@@ -147,6 +148,7 @@ private:
       "lib/", "lib/runtime/", "lib/static/", "lib/sys/", 
       "bin/", "bin/vm/", "bin/modules/", "bin/etc/", 
       "dev/", "dev/tools/", "dev/bin/", 
+      "include/", "include/tinyw/",
       "vm/", 
       "settings/",
       "extentions/",
@@ -205,10 +207,13 @@ public:
       auto copy_task = copy_file("copying execution file", ExecutionFile(), prefix / "bin" / "tinyw");
       auto dir_task  = create_directories("creating directories", add_fs_prefix(prefix, GetFoldersToCreate()));
       auto home_task = create_directories("creating home  ", std::vector{prefix});
-
+      
       vec<GenericTask*> tasks{};
       tasks | &home_task | &dir_task | &copy_task;
       run_tasks(tasks);
+
+      auto cpy_built = copy_built_in_files(prefix / "include" / "tinyw/");
+      run_task_with_ui(cpy_built);
     }
 
     return home / ".tinyw";
